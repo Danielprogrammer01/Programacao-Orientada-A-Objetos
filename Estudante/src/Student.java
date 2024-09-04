@@ -2,41 +2,78 @@ public class Student {
 
     private String nome;
     private float[] notas = new float[3];
+    private float somaNotas = 0.0f;
 
-    public float calcularMedia(float[]notas){
+    
 
-        float somaNotas = 0.0f;
+    public String getNome() {
+        return nome;
+    }
+
+
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+
+
+    public float[] getNotas() {
+        return notas;
+    }
+
+
+
+    public void setNotas(float[] nota) {
         
-        for(int i = 0; i < notas.length;i++){
+        for(int i = 0; i < notas.length; i++){
 
-            if (i == 0 && notas[0] <= 30.0){
+            this.notas[i] = nota[i];
 
-                somaNotas += notas[0];
+        }
+    }
 
-            } else if (i == 1 && notas[1] <= 35.0){
+    
 
-                somaNotas += notas[1];
+    public float calcularMedia(float nota,int i){
 
-            } else if (i == 2 && notas[2] <= 35.0){
+        
+            if (nota <= 30.0){
 
-                somaNotas += notas[2];
+                somaNotas += nota;
+
+            } else if (nota <= 35.0){
+
+                somaNotas += nota;
+
+            } else if (nota <= 35.0){
+
+                somaNotas += nota;
 
             } else {
 
-                System.out.printf("Nota do %dº trimestre inválida!",i+1);
+                System.out.printf("Nota do %dº trimestre inválida!", i+1);
 
             }
 
-        }
         
-        return somaNotas/notas.length;
+        
+        return somaNotas;
         
     }
     
     
     
-    public void situacaoAluno(){
+    public void situacaoAluno(float somaNotas){
 
+        if (somaNotas >= 60.0) {
+            System.out.printf("NOTA FINAL = %.2f %n", somaNotas);
+            System.out.printf("APROVADO%n");
+        } else {
+            System.out.printf("NOTA FINAL = %.2f%n", somaNotas);
+            System.out.printf("REPROVADO%n");
+            System.out.printf("FALTANDO %.2f Pontos%n", 60 - somaNotas);
+        }
 
 
     }
